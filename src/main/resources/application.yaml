@@ -1,0 +1,34 @@
+server:
+  port: 8099
+spring:
+  application:
+    name: filecontroller
+  datasource:
+    url: jdbc:mysql://123.57.139.0:3306/fc?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Lz00126.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 3000MB
+      max-request-size: 1000MB
+
+  # Mybatis
+mybatis:
+  # ???
+  type-aliases-package: src.main.java.com.bili.entity
+  # XML??
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # ??????
+    map-underscore-to-camel-case: true
+
+files:
+  local:
+    categorized: D:/filecontroller/categorized
+    unCategorized: D:/filecontroller/unCategorized
+  net:
+    categorized: http://localhost:8099/resource/categorized/
+    unCategorized: http://localhost:8099/resource/unCategorized/
+
