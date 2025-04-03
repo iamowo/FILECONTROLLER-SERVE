@@ -12,6 +12,16 @@ public class Img {
     private String time;
     private Integer watchs;
 
+    private Long filesize;
+
+    public Long getFilesize() {
+        return filesize;
+    }
+
+    public void setFilesize(Long filesize) {
+        this.filesize = filesize;
+    }
+
     public String getPath() {
         return path;
     }
@@ -78,6 +88,7 @@ public class Img {
                 ", height=" + height +
                 ", time='" + time + '\'' +
                 ", watchs=" + watchs +
+                ", filesize=" + filesize +
                 '}';
     }
 }

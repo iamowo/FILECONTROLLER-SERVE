@@ -1,6 +1,7 @@
 package com.filecontroller.serve.imp;
 
 import com.filecontroller.entity.Img;
+import com.filecontroller.entity.Manga;
 import com.filecontroller.entity.Video;
 import com.filecontroller.serve.FileService;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,7 +40,7 @@ public class FileServiceImp implements FileService {
         Integer musicNum = 0;
         List<Video> videopath = new ArrayList<>();
         List<Img> imgpath = new ArrayList<>();
-        List<String> mangapath = new ArrayList<>();
+        List<Manga> mangapath = new ArrayList<>();
         List<String> musicpath = new ArrayList<>();
         if (file.isDirectory()) {
             File[] files = file.listFiles();
@@ -49,8 +50,19 @@ public class FileServiceImp implements FileService {
                 // 文件名
                 String fileNameNow = files[i].getPath().substring(files[i].getPath().lastIndexOf("\\")+1);
                 if (files[i].isDirectory()) {
-                    // manga
-                    mangapath.add(files[i].getPath());
+                    // == 漫画 ==
+                    Manga manga = new Manga();
+                    manga.setId(1);
+                    File nowfile = new File(files[i].getPath());
+                    File[] secondfile = nowfile.listFiles();
+                    for (int j = 0; j < secondfile.length; j++) {
+                        if (secondfile[j].isDirectory()) {
+                            // 分章节
+
+                        } else {
+                            // 只有一章
+                        }
+                    }
                     ++mangaNum;
                 } else {
                     // 文件路径
@@ -60,6 +72,7 @@ public class FileServiceImp implements FileService {
                     // jpg
                     String suffix=filepath.split("\\.")[filepath.split("\\.").length-1];
                     if (Arrays.asList(imgsuffixs).contains(suffix)) {
+                        // == 图片 ==
                         Map<String, Integer> wah = getImgWAH(filepath);
                         Integer height = wah.get("height");
                         Integer width = wah.get("width");
@@ -71,6 +84,7 @@ public class FileServiceImp implements FileService {
                         img.setId(imgNum++);
                         imgpath.add(img);
                     } else if (Arrays.asList(videosuffixs).contains(suffix)) {
+                        // == 视频 ==
                         Video video = new Video();
                         // base 64 封面
                         String frameBase64 = getFrameAsBase64(filepath, 5);
@@ -88,6 +102,7 @@ public class FileServiceImp implements FileService {
                         video.setFilename(fileNameNow);
                         video.setId(videoNum++);
                     } else if (Arrays.asList(musicssuffixs).contains(suffix)) {
+                        // == 音乐 ==
                         musicpath.add((filepath));
                         ++musicNum;
                     }
