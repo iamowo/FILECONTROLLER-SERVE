@@ -1,8 +1,5 @@
-# 应用服务 WEB 访问端口
 server:
   port: 8099
-url:
-  u1: http://localhost:8099
 spring:
   application:
     name: filecontroller
@@ -28,6 +25,9 @@ mybatis:
     map-underscore-to-camel-case: true
 
 files:
-  categorized: D:/filecontroller/categorized
-  unCategorized: D:/filecontroller/unCategorized
-
+  local:
+    categorized: D:/filecontroller/categorized/
+    unCategorized: D:/filecontroller/unCategorized/
+  net:
+    categorized: http://localhost:8099/resource/categorized/
+    unCategorized: http://localhost:8099/resource/unCategorized/

@@ -7,10 +7,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class ResourceConfig implements WebMvcConfigurer {
-    // 通过读取配置项获取的文件上传路径
-    @Value("${files.categorized}")
+    @Value("${files.local.categorized}")
     private String categorized;
-    @Value("${files.unCategorized}")
+    @Value("${files.local.unCategorized}")
     private String unCategorized;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

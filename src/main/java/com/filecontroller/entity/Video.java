@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 @Data
 public class Video {
     private Integer id;
+    // 文件名
+    private String filename;
     // 路径
     private String path;
     // 时长
@@ -15,6 +17,8 @@ public class Video {
     private String cover;
     // 观看次数
     private Integer watchs;
-    // 归类时间
-    private Timestamp time;
+    // 上传时间
+    private String time;
+    // 文件大小
+    private Long filesize;
 }

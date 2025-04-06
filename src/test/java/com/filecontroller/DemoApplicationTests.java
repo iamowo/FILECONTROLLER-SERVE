@@ -1,5 +1,6 @@
 package com.filecontroller;
 
+import com.filecontroller.entity.Video;
 import com.filecontroller.serve.FileService;
 import com.filecontroller.serve.imp.FileServiceImp;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,14 @@ class DemoApplicationTests {
     private FileServiceImp fileServiceImp;
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws Exception {
         Map<String, Object> res = new HashMap<>();
-        res = fileServiceImp.getAllUncategorized();
         System.out.println(res);
+    }
+
+    @Test
+    void contextLoads2() throws Exception {
+        Video v = new Video();
     }
 
 }
