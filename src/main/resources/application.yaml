@@ -4,9 +4,9 @@ spring:
   application:
     name: filecontroller
   datasource:
-    url: jdbc:mysql://123.57.139.0:3306/fc?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/fc?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: Lz00126.
+    password: Lz001126.
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
