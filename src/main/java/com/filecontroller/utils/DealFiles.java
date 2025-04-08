@@ -145,4 +145,15 @@ public class DealFiles {
         }
         return res;
     }
+
+    /**
+     * 获取视频时长(hh:mm:ss格式)
+     */
+    public static Boolean createFolder (String path)  {
+        File file = new File(path);
+        if (!file.exists()){
+            return file.mkdirs();
+        }
+        return false;
+    }
 }

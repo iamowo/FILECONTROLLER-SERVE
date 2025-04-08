@@ -3,6 +3,7 @@ package com.filecontroller.controller;
 import com.filecontroller.entity.Img;
 import com.filecontroller.entity.Manga;
 import com.filecontroller.entity.Music;
+import com.filecontroller.entity.UP.OneCategorize;
 import com.filecontroller.entity.Video;
 import com.filecontroller.serve.FileService;
 import com.filecontroller.utils.Response;
@@ -69,4 +70,15 @@ public class FileController {
             return Response.failure(500, "error: " + e);
         }
     }
+
+    @PostMapping("/cateorizeFiles")
+    public Response cateorizeFiles (@RequestBody OneCategorize oneCategorize) {
+        try {
+            fileService.cateorizeFiles(oneCategorize);
+            return Response.success(200);
+        } catch (Exception e) {
+            return Response.failure(500, "error: " + e);
+        }
+    }
+
 }

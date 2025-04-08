@@ -4,10 +4,7 @@ import com.filecontroller.entity.DAO.FavoritesFloder;
 import com.filecontroller.serve.FFService;
 import com.filecontroller.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,16 @@ public class FFController {
         try {
             List<FavoritesFloder> res = ffService.getOneType(type);
             return Response.success(res);
+        } catch (Exception e) {
+            return Response.failure(500, "error: " + e);
+        }
+    }
+
+    @PostMapping("/addOneFolder")
+    public Response addOneFolder (@RequestBody FavoritesFloder favoritesFloder) {
+        try {
+            ffService.addOneFolder(favoritesFloder);
+            return Response.success(200);
         } catch (Exception e) {
             return Response.failure(500, "error: " + e);
         }

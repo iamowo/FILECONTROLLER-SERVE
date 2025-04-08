@@ -1,8 +1,10 @@
 package com.filecontroller.serve.imp;
 
+import com.filecontroller.entity.DAO.Resource;
 import com.filecontroller.entity.Img;
 import com.filecontroller.entity.Manga;
 import com.filecontroller.entity.Music;
+import com.filecontroller.entity.UP.OneCategorize;
 import com.filecontroller.entity.Video;
 import com.filecontroller.serve.FileService;
 import org.springframework.beans.factory.annotation.Value;
@@ -129,5 +131,15 @@ public class FileServiceImp implements FileService {
         Integer res = f.listFiles().length;
         // 获取目标文件或文件夹个数
         return res;
+    }
+
+    @Override
+    public void cateorizeFiles(OneCategorize oneCategorize) {
+        // 添加tag
+
+        // 资源信息
+        Resource resource = new Resource();
+        resource.setTitle(oneCategorize.getTitle());
+        resource.setIntro(oneCategorize.getIntro());
     }
 }

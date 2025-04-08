@@ -2,4 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.filecontroller.mapper.FFMapper">
 
+    <insert id="addOneFolder">
+        insert into `favorites_folder`
+        (title, type) value (#{title}, #{type})
+    </insert>
+
+    <update id="updateOneFolder">
+        update `favorites_folder`
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="intro != null and intro != ''">
+                intro = #{intro},
+            </if>
+            <if test="nums != null and nums != ''">
+                nums = nums + #{nums},
+            </if>
+            <where>
+                id = #{id}
+            </where>
+        </set>
+    </update>
+
+    <select id="getOneType" resultType="com.filecontroller.entity.DAO.FavoritesFloder">
+        select * from `favorites_folder` where type = #{type}
+    </select>
 </mapper>
