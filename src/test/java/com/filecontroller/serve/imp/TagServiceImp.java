@@ -22,4 +22,9 @@ public class TagServiceImp implements TagService {
     public List<Tag> allTag() {
         return tagMapper.allTag();
     }
+
+    @Override
+    public void addThisTag(String tag) {
+        return null;
+    }
 }

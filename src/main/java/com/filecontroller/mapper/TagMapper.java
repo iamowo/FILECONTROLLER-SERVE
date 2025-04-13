@@ -10,4 +10,6 @@ public interface TagMapper {
     public List<Tag> allTag();
 
     List<Tag> matchingTags(String tag);
+
+    void addTag(String tag);
 }

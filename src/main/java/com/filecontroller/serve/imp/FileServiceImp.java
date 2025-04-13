@@ -6,7 +6,10 @@ import com.filecontroller.entity.Manga;
 import com.filecontroller.entity.Music;
 import com.filecontroller.entity.UP.OneCategorize;
 import com.filecontroller.entity.Video;
+import com.filecontroller.mapper.FileMapper;
+import com.filecontroller.mapper.TagMapper;
 import com.filecontroller.serve.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,11 @@ import static com.filecontroller.utils.DealFiles.*;
 
 @Service
 public class FileServiceImp implements FileService {
+
+    @Autowired
+    private FileMapper fileMapper;
+    @Autowired
+    private TagMapper tagMapper;
 
     @Value("${files.local.categorized}")
     private String categorizedPathLocal;
@@ -136,10 +144,15 @@ public class FileServiceImp implements FileService {
     @Override
     public void cateorizeFiles(OneCategorize oneCategorize) {
         // 添加tag
+        for (int i = 0; i < oneCategorize.getTags().size(); i++) {
+            tagMapper.addTag(oneCategorize.getTags().get(i));
+        }
 
         // 资源信息
         Resource resource = new Resource();
         resource.setTitle(oneCategorize.getTitle());
         resource.setIntro(oneCategorize.getIntro());
+        Integer fid = fileMapper.addOneResource(resource);
+        // 添加信息
     }
 }

@@ -8,4 +8,6 @@ public interface TagService {
     List<Tag> matchingTags(String tag);
 
     List<Tag> allTag();
+
+    void addThisTag(String tag);
 }
