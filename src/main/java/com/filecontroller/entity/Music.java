@@ -8,4 +8,11 @@ public class Music {
     private String filename;
     private String path;
     private String time;
+    private String duration;
+    private String intro;
+    private String author;
+
+    private String coverpath;
+    private Integer nums;
+    private Long filesize;
 }

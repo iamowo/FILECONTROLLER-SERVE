@@ -16,7 +16,7 @@ public class Video {
     // base64 封面
     private String cover;
     // 观看次数
-    private Integer watchs;
+    private Integer nums;
     // 上传时间
     private String time;
     // 文件大小
