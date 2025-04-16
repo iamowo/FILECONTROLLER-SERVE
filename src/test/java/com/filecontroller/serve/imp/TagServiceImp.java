@@ -25,6 +25,5 @@ public class TagServiceImp implements TagService {
 
     @Override
     public void addThisTag(String tag) {
-        return null;
     }
 }

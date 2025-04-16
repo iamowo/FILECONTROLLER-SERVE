@@ -1,10 +1,7 @@
 package com.filecontroller.serve;
 
-import com.filecontroller.entity.Img;
-import com.filecontroller.entity.Manga;
-import com.filecontroller.entity.Music;
+import com.filecontroller.entity.*;
 import com.filecontroller.entity.UP.OneCategorize;
-import com.filecontroller.entity.Video;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -20,4 +17,6 @@ public interface FileService {
     Integer getLength(String type);
 
     void cateorizeFiles(OneCategorize oneCategorize);
+
+    MangaChapter getOneMangaChapter(Integer id, String filepath) throws Exception;
 }

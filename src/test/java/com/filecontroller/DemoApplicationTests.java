@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -18,8 +17,8 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() throws Exception {
-        Map<String, Object> res = new HashMap<>();
-        System.out.println(res);
+        List<Integer> a = Arrays.asList(1, 2, 3);
+        a.forEach((n) -> System.out.println(a));
     }
 
     @Test

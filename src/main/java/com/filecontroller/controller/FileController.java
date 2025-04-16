@@ -1,10 +1,7 @@
 package com.filecontroller.controller;
 
-import com.filecontroller.entity.Img;
-import com.filecontroller.entity.Manga;
-import com.filecontroller.entity.Music;
+import com.filecontroller.entity.*;
 import com.filecontroller.entity.UP.OneCategorize;
-import com.filecontroller.entity.Video;
 import com.filecontroller.serve.FileService;
 import com.filecontroller.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +29,7 @@ public class FileController {
     }
 
     @GetMapping("/getUncategorizedImg")
-    public Response getUncategorizedImg(Integer page, Integer num) {
+    public Response getUncategorizedImg(@RequestParam Integer page, @RequestParam Integer num) {
         try {
             List<Img> res = fileService.getUncategorizedImg(page, num);
             return Response.success(res);
@@ -45,6 +42,16 @@ public class FileController {
     public Response getUncategorizedManga(Integer page, Integer num) {
         try {
             List<Manga> res = fileService.getUncategorizedManga(page, num);
+            return Response.success(res);
+        } catch (Exception e) {
+            return Response.failure(500, "error: " + e);
+        }
+    }
+
+    @GetMapping("/getOneMangaChapter/{id}/{filepath}")
+    public Response getOneMangaChapter(@PathVariable Integer id, @PathVariable String filepath) {
+        try {
+            MangaChapter res = fileService.getOneMangaChapter(id, filepath);
             return Response.success(res);
         } catch (Exception e) {
             return Response.failure(500, "error: " + e);
